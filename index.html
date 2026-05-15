@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhammad Abdullah | Full Stack Developer</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* Scrollbar */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:orange;
+      border-radius:10px;
+    }
+
+    /* Background Glow */
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:rgba(255,140,0,0.15);
+      top:-150px;
+      left:-150px;
+      filter:blur(120px);
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:rgba(0,140,255,0.15);
+      bottom:-150px;
+      right:-150px;
+      filter:blur(120px);
+      z-index:-1;
+    }
+
+    section{
+      min-height:100vh;
+      padding:100px 10%;
+    }
+
+    /* Navbar */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:orange;
+      text-shadow:0 0 15px rgba(255,140,0,0.6);
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      position:relative;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:orange;
+    }
+
+    nav ul li a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0%;
+      height:2px;
+      background:orange;
+      transition:0.4s;
+    }
+
+    nav ul li a:hover::after{
+      width:100%;
+    }
+
+    /* Hamburger */
+
+    .menu-btn{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+      color:white;
+    }
+
+    /* Hero Section */
+
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+      min-height:100vh;
+    }
+
+    .hero-text{
+      flex:1;
+      animation:fadeLeft 1s ease;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.2;
+      margin-bottom:15px;
+    }
+
+    .hero-text h1 span{
+      color:orange;
+      text-shadow:0 0 20px rgba(255,140,0,0.8);
+    }
+
+    /* Typing Effect */
+
+    .typing-text{
+      font-size:38px;
+      font-weight:600;
+      margin-bottom:20px;
+      color:white;
+    }
+
+    .typing-text span{
+      color:#00bfff;
+      text-shadow:0 0 15px rgba(0,191,255,0.8);
+      border-right:4px solid orange;
+      padding-right:8px;
+      animation:blink 0.7s infinite;
+    }
+
+    @keyframes blink{
+      50%{
+        border-color:transparent;
+      }
+    }
+
+    .hero-text p{
+      margin:20px 0;
+      color:#ccc;
+      line-height:1.8;
+      font-size:18px;
+      max-width:600px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:orange;
+      color:black;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.4s;
+      box-shadow:0 0 20px rgba(255,165,0,0.4);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.05);
+      box-shadow:0 0 35px rgba(255,165,0,0.9);
+    }
+
+    /* Hero Image */
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      animation:fadeRight 1s ease;
+    }
+
+    .hero-image img{
+      width:350px;
+      height:350px;
+      object-fit:cover;
+      border-radius:50%;
+      border:5px solid orange;
+      box-shadow:
+        0 0 25px rgba(255,140,0,0.5),
+        0 0 60px rgba(255,140,0,0.3);
+      transition:0.5s;
+    }
+
+    .hero-image img:hover{
+      transform:scale(1.05);
+      box-shadow:
+        0 0 35px rgba(255,140,0,0.8),
+        0 0 80px rgba(255,140,0,0.5);
+    }
+
+    /* Titles */
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:45px;
+      color:orange;
+      text-shadow:0 0 20px rgba(255,140,0,0.4);
+    }
+
+    /* About */
+
+    .about-content{
+      text-align:center;
+      max-width:800px;
+      margin:auto;
+      line-height:2;
+      color:#ddd;
+      font-size:18px;
+    }
+
+    /* Skills */
+
+    .skills-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-box{
+      background:rgba(255,255,255,0.05);
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.5s;
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+    }
+
+    .skill-box:hover{
+      transform:translateY(-10px);
+      background:rgba(255,140,0,0.1);
+      box-shadow:0 0 30px rgba(255,140,0,0.2);
+    }
+
+    .skill-box i{
+      font-size:55px;
+      color:orange;
+      margin-bottom:20px;
+    }
+
+    .skill-box h3{
+      font-size:25px;
+    }
+
+    /* Projects */
+
+    .projects-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      overflow:hidden;
+      border-radius:25px;
+      position:relative;
+      cursor:pointer;
+      transition:0.5s;
+    }
+
+    .project-card img{
+      width:100%;
+      height:350px;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .project-card:hover img{
+      transform:scale(1.1);
+      filter:brightness(0.4);
+    }
+
+    .project-info{
+      position:absolute;
+      bottom:-100%;
+      left:0;
+      width:100%;
+      padding:30px;
+      background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
+      transition:0.5s;
+    }
+
+    .project-card:hover .project-info{
+      bottom:0;
+    }
+
+    .project-info h3{
+      color:orange;
+      margin-bottom:10px;
+    }
+
+    /* Resume */
+
+    .resume-box{
+      text-align:center;
+      padding:50px;
+      background:rgba(255,255,255,0.05);
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,0.1);
+      backdrop-filter:blur(10px);
+    }
+
+    /* Contact */
+
+    .contact-form{
+      max-width:700px;
+      margin:auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:18px;
+      margin:15px 0;
+      border:none;
+      outline:none;
+      border-radius:15px;
+      background:#111;
+      color:white;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-form textarea{
+      height:180px;
+      resize:none;
+    }
+
+    .contact-form button{
+      border:none;
+      cursor:pointer;
+    }
+
+    /* Footer */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#0a0a0a;
+      color:#aaa;
+    }
+
+    /* Animations */
+
+    @keyframes fadeLeft{
+      from{
+        opacity:0;
+        transform:translateX(-100px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    @keyframes fadeRight{
+      from{
+        opacity:0;
+        transform:translateX(100px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    .hidden{
+      opacity:0;
+      transform:translateY(60px);
+      transition:1s;
+    }
+
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* Mobile Responsive */
+
+    @media(max-width:900px){
+
+      nav{
+        padding:20px 7%;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      nav ul{
+        position:absolute;
+        top:90px;
+        right:-100%;
+        width:250px;
+        height:100vh;
+        background:rgba(0,0,0,0.95);
+        backdrop-filter:blur(10px);
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-start;
+        padding-top:50px;
+        transition:0.5s;
+      }
+
+      nav ul.active{
+        right:0;
+      }
+
+      nav ul li{
+        margin:20px 0;
+      }
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding-top:150px;
+      }
+
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      .typing-text{
+        font-size:28px;
+      }
+
+      .hero-image img{
+        width:280px;
+        height:280px;
+      }
+
+      .hero-text p{
+        margin:auto;
+      }
+
+      section{
+        padding:100px 7%;
+      }
+
+      .title h2{
+        font-size:35px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <nav>
+
+    <div class="logo">ABDULLAH'S PORTFOLIO</div>
+
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu-btn" id="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+  </nav>
+
+  <!-- Hero Section -->
+
+  <section id="home" class="hero">
+
+    <div class="hero-text">
+
+      <h1>Hello, I'm <span>Muhammad Abdullah</span></h1>
+
+      <h2 class="typing-text">
+        I'm a <span id="typing"></span>
+      </h2>
+
+      <p>
+        A Full Stack Developer passionate about creating
+        modern, interactive, and visually stunning websites &
+        mobile applications.
+      </p>
+
+      <a href="#projects" class="btn">View Projects</a>
+
+    </div>
+
+    <div class="hero-image">
+
+      <img src="IMG-20260511-WA0034.jpg" alt="Developer">
+
+    </div>
+
+  </section>
+
+  <!-- About -->
+
+  <section id="about" class="hidden">
+
+    <div class="title">
+      <h2>About Me</h2>
+    </div>
+
+    <div class="about-content">
+
+      <p>
+        I am Muhammad Abdullah, a creative Full Stack Developer
+        with expertise in HTML, CSS, JavaScript, Tailwind CSS,
+        and Flutter. I love building cinematic user interfaces,
+        smooth animations, responsive websites, and modern
+        applications with beautiful user experiences.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+
+  <section id="skills" class="hidden">
+
+    <div class="title">
+      <h2>My Skills</h2>
+    </div>
+
+    <div class="skills-container">
+
+      <div class="skill-box">
+        <i class="fa-brands fa-html5"></i>
+        <h3>HTML</h3>
+      </div>
+
+      <div class="skill-box">
+        <i class="fa-brands fa-css3-alt"></i>
+        <h3>CSS</h3>
+      </div>
+
+      <div class="skill-box">
+        <i class="fa-brands fa-js"></i>
+        <h3>JavaScript</h3>
+      </div>
+
+      <div class="skill-box">
+        <i class="fa-solid fa-wind"></i>
+        <h3>Tailwind</h3>
+      </div>
+
+      <div class="skill-box">
+        <i class="fa-brands fa-flutter"></i>
+        <h3>Flutter</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+
+  <section id="projects" class="hidden">
+
+    <div class="title">
+      <h2>Projects</h2>
+    </div>
+
+    <div class="projects-container">
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200" alt="">
+
+        <div class="project-info">
+          <h3>Portfolio Website</h3>
+          <p>Modern cinematic portfolio using HTML CSS & JavaScript.</p>
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200" alt="">
+
+        <div class="project-info">
+          <h3>Flutter App</h3>
+          <p>Beautiful mobile application built with Flutter.</p>
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200" alt="">
+
+        <div class="project-info">
+          <h3>Full Stack System</h3>
+          <p>Dynamic responsive web application with smooth UI.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Resume -->
+
+  <section id="resume" class="hidden">
+
+    <div class="title">
+      <h2>Resume</h2>
+    </div>
+
+    <div class="resume-box">
+
+      <p style="margin-bottom:25px; color:#ddd;">
+        Download my professional resume and explore my experience,
+        projects, and technical skills.
+      </p>
+
+      <a href="#" class="btn">Download Resume</a>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+
+  <section id="contact" class="hidden">
+
+    <div class="title">
+      <h2>Contact Me</h2>
+    </div>
+
+    <form class="contact-form">
+
+      <input type="text" placeholder="Your Name" required>
+
+      <input type="email" placeholder="Your Email" required>
+
+      <textarea placeholder="Your Message"></textarea>
+
+      <button class="btn">Send Message</button>
+
+    </form>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    © 2026 Muhammad Abdullah | Full Stack Developer
+  </footer>
+
+  <!-- JavaScript -->
+
+  <script>
+
+    // Scroll Reveal Animation
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+
+    const observer = new IntersectionObserver((entries) => {
+
+      entries.forEach((entry) => {
+
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+
+      });
+
+    });
+
+    hiddenElements.forEach((el) => observer.observe(el));
+
+
+
+    // Typing Effect
+
+    const text = [
+      "Full Stack Developer",
+      "Frontend Developer",
+      "Flutter Developer",
+      "Web Designer"
+    ];
+
+    let count = 0;
+    let index = 0;
+    let currentText = "";
+    let letter = "";
+
+    (function type(){
+
+      if(count === text.length){
+        count = 0;
+      }
+
+      currentText = text[count];
+      letter = currentText.slice(0, ++index);
+
+      document.getElementById('typing').textContent = letter;
+
+      if(letter.length === currentText.length){
+
+        setTimeout(() => {
+
+          index = 0;
+          count++;
+          type();
+
+        }, 1500);
+
+      }
+      else{
+
+        setTimeout(type, 100);
+
+      }
+
+    })();
+
+
+
+    // Hamburger Menu
+
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.onclick = () => {
+      menu.classList.toggle('active');
+    }
+
+  </script>
+
+</body>
+</html>
